@@ -73,8 +73,8 @@ export default function App() {
     }
 
     function isNightTime() { // Gets the time in 24 hour time
-        const timeInMilliseconds = new Date().getTime() + locationData.dstOffset + locationData.rawOffset;
-        if (timeInMilliseconds >= weatherData.sys.sunrise && timeInMilliseconds < weatherData.sys.sunset) {
+        const timeInSeconds = (new Date().getTime() + locationData.dstOffset + locationData.rawOffset) / 1000;
+        if (timeInSeconds >= weatherData.sys.sunrise && timeInSeconds < weatherData.sys.sunset) {
             return false;
         }
         return true;
@@ -93,9 +93,9 @@ export default function App() {
                     city={currentCity.city}
                     state={currentCity.state}
                     data={weatherData}
-                    getTimeOfDay={isNightTime}
+                    isNightTime={isNightTime}
                 />
-            ) : <div className='weather-placeholder'><strong>Enter a city name for current weather</strong></div>}
+            ) : <div className='weather-placeholder'><strong>Enter a city to get the current weather at that location</strong></div>}
         </div>
     );
 }
