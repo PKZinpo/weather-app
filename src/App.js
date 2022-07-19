@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import MainWeather from './components/MainWeather';
 import SearchBar from './components/SearchBar';
 import Background from './components/Background';
-import cityData from './city.list.json';
+import cityList from './components/cityList';
+import PageTitle from './components/Helmet';
 
 export default function App() {
 
     const [weatherData, setWeatherData] = useState({});
     const [locationData, setLocationData] = useState({});
     const [currentCity, setCurrentCity] = useState({city: '', state: ''});
-    const [cityList, setCityList] = useState([]);
     
     useEffect(() => { // Get Weather API Data
         if (currentCity.city !== '' && currentCity.city !== 'Does Not Exist') {
@@ -27,19 +27,6 @@ export default function App() {
                 .then(result => setLocationData(result));
         }
     }, [weatherData]);
-
-    useEffect(() => { // Populate list of cities
-        const array = [];
-        for (let i = 0; i < cityData.length; i++) {
-            if (cityData[i].country === 'US') {
-                array.push({
-                    city: cityData[i].name,
-                    state: cityData[i].state
-                });
-            }
-        }
-        setCityList(array);
-    }, []);
 
     function isCityInList(cityName) { // Check if city is in list
         return cityList.some(c => c.city === cityName);
@@ -82,6 +69,7 @@ export default function App() {
 
     return (
         <div className='app-container'>
+            <PageTitle />
             <Background />
             <SearchBar
                 cities={cityList}
