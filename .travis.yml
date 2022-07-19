@@ -5,12 +5,12 @@ cache:
   directories:
   - node_modules
 script:
-  - CI= npm test
-  - CI= npm run build
+  - npm test
+  - npm run build
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $github_token
   local_dir: build
   on:
-    branch: master
+    branch: main
