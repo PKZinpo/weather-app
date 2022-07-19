@@ -5,7 +5,7 @@ export default function Background() {
     return (
         <div className='background'>
             <div className='box'/>
-            <a className='credit' href="https://www.freepik.com/vectors/mountain-river">Mountain river vector created by jcomp - www.freepik.com</a>
+            <a className='credit' href="http://www.freepik.com">Designed by kjpargeter / Freepik</a>
         </div>
     );
 }

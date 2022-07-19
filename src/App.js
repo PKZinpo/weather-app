@@ -4,16 +4,6 @@ import SearchBar from './components/SearchBar';
 import Background from './components/Background';
 import cityData from './city.list.json';
 
-
-const apiWeather = {
-    key: '1eb28502f13bc97e5cd62cbf568b7713',
-    base: 'https://api.openweathermap.org/data/2.5/'
-}
-const apiLocation = {
-    key: 'AIzaSyA9qoKVJ2kJuZFJUPRfByvf9Gpnl_nWUFo',
-    base: 'https://maps.googleapis.com/maps/api/timezone/'
-}
-
 export default function App() {
 
     const [weatherData, setWeatherData] = useState({});
@@ -23,7 +13,7 @@ export default function App() {
     
     useEffect(() => { // Get Weather API Data
         if (currentCity.city !== '' && currentCity.city !== 'Does Not Exist') {
-            fetch(`${apiWeather.base}weather?q=${currentCity.city}&appid=${apiWeather.key}`)
+            fetch(`${process.env.REACT_APP_OPEN_WEATHER_URL}weather?q=${currentCity.city}&appid=${process.env.REACT_APP_OPEN_WEATHER_KEY}`)
                 .then(res => res.json())
                 .then(result => setWeatherData(result));
         }
@@ -32,7 +22,7 @@ export default function App() {
     useEffect(() => { // Get Location API Data
         if (currentCity.city !== '' && currentCity.city !== 'Does Not Exist') {
             const time = new Date().getTime() / 1000;
-            fetch(`${apiLocation.base}json?location=${weatherData.coord.lat}%2C${weatherData.coord.lon}&timestamp=${time}&key=${apiLocation.key}`)
+            fetch(`${process.env.REACT_APP_GOOGLE_URL}json?location=${weatherData.coord.lat}%2C${weatherData.coord.lon}&timestamp=${time}&key=${process.env.REACT_APP_GOOGLE_KEY}`)
                 .then(res => res.json())
                 .then(result => setLocationData(result));
         }
