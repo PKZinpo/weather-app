@@ -46,31 +46,31 @@ export default function MainWeather(props) {
             const id = props.data.weather[0].id;
             
             if (id >= 200 && id < 300) {        // Thunderstorms
-                props.isNightTime ? setWeatherIndex(7) : setWeatherIndex(0);
+                props.isNightTime() ? setWeatherIndex(7) : setWeatherIndex(0);
             }
             else if (id >= 300 && id < 400) {   // Drizzle
-                props.isNightTime ? setWeatherIndex(8) : setWeatherIndex(1);
+                props.isNightTime() ? setWeatherIndex(8) : setWeatherIndex(1);
             }
             else if (id >= 500 && id < 600) {   // Rain
-                props.isNightTime ? setWeatherIndex(9) : setWeatherIndex(2);
+                props.isNightTime() ? setWeatherIndex(9) : setWeatherIndex(2);
             }
             else if (id >= 600 && id < 700) {   // Snow
-                props.isNightTime ? setWeatherIndex(10) : setWeatherIndex(3);
+                props.isNightTime() ? setWeatherIndex(10) : setWeatherIndex(3);
             }
             else if (id >= 700 && id < 800) {   // Foggy/Hazey
-                props.isNightTime ? setWeatherIndex(11) : setWeatherIndex(4);
+                props.isNightTime() ? setWeatherIndex(11) : setWeatherIndex(4);
             }
             else if (id === 800) {              // Clear
-                props.isNightTime ? setWeatherIndex(12) : setWeatherIndex(5);
+                props.isNightTime() ? setWeatherIndex(12) : setWeatherIndex(5);
             }
             else {                              // Cloudy
-                props.isNightTime ? setWeatherIndex(13) : setWeatherIndex(6);
+                props.isNightTime() ? setWeatherIndex(13) : setWeatherIndex(6);
             }
         }
 
         getWeatherIcon();
     }, [props.data.weather[0].id]);
-
+    
     return (
         <main className='main-container'>
             <div className='main-temp-container'>
