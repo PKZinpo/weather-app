@@ -3,7 +3,7 @@ import MainWeather from './components/MainWeather';
 import SearchBar from './components/SearchBar';
 import Background from './components/Background';
 import cityList from './components/cityList';
-import PageTitle from './components/Helmet';
+import PageTitle from './components/PageTitle';
 
 export default function App() {
 
