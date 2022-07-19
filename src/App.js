@@ -88,13 +88,6 @@ export default function App() {
             return false;
         }
         return true;
-        // if (timeInSeconds + locationData.dstOffset + locationData.rawOffset < 0) {
-        //     return 86400 - (timeInSeconds + locationData.dstOffset + locationData.rawOffset);
-        // }
-        // else {
-        //     return timeInSeconds + locationData.dstOffset + locationData.rawOffset;
-        // }
-        
     }
 
     return (
