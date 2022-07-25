@@ -28,31 +28,7 @@ export default function App() {
         }
     }, [weatherData]);
 
-    function isCityInList(cityName) { // Check if city is in list
-        return cityList.some(c => c.city === cityName);
-    }
-
-    function setCity(c) { // Set current city using only city
-        if (isCityInList(c)) {
-            for (let i = 0; i < cityList.length; i++) {
-                if (cityList[i].city === c) {
-                    setCurrentCity({
-                        city: cityList[i].city,
-                        state: cityList[i].state
-                    });
-                    break;
-                }
-            }
-        }
-        else {
-            setCurrentCity({
-                city: 'Does Not Exist', 
-                state: 'Does Not Exist'
-            });
-        }
-    }
-
-    function setCityAndState(cityObject) { // Set current city using city and state
+    function setCity(cityObject) { // Set current city using city and state
         setCurrentCity({
             city: cityObject.city,
             state: cityObject.state
@@ -74,7 +50,6 @@ export default function App() {
             <SearchBar
                 cities={cityList}
                 setCity={setCity}
-                setCityAndState={setCityAndState}
             />
             {weatherData.main !== undefined ? (
                 <MainWeather

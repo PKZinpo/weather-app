@@ -8,15 +8,8 @@ export default function SearchBar(props) {
     const [citiesFiltered, setCitiesFiltered] = useState([]);
     const [searchElements, setSearchElements] = useState([]);
 
-    function searchCity(e) { // Searches for city in parent function
-        if (e.key === 'Enter') {
-            props.setCity(cityQuery);
-            setCityQuery('');
-        }
-    }
-
     function searchCityAndState(c) { // Searches for city/state using index of filtered cities array
-        props.setCityAndState(citiesFiltered[c]);
+        props.setCity(citiesFiltered[c]);
         setCityQuery('');
         setSearchElements([]);
     }
@@ -61,7 +54,6 @@ export default function SearchBar(props) {
                 placeholder='Enter City Name'
                 onChange={(e) => setCitySearch(e.target.value)}
                 value={cityQuery}
-                onKeyPress={(event) => {searchCity(event)}}
             />
             <ul className='search-bar-dropdown'>
                 {searchElements}
